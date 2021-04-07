@@ -16,6 +16,9 @@ class SiteNavbar extends Component {
                             <Navbar.Brand><Link to="/login">Login</Link></Navbar.Brand>
                         }
                         {this.props.auth.authenticated === true &&
+                            <Navbar.Brand><Link to="/settings">Settings</Link></Navbar.Brand>
+                        }
+                        {this.props.auth.authenticated === true &&
                             <Navbar.Brand><Link to="/logout">Logout</Link></Navbar.Brand>
                         }
                     </Nav>

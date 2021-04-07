@@ -29,7 +29,9 @@ class LoginContainer extends Component {
                 console.log(response.data.user.username)
                 console.log(response.data.user.is_admin)
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('username', response.data.user.username);
+                localStorage.setItem('id', response.data.user.id);
+                localStorage.setItem('firstname', response.data.user.firstname);
+                localStorage.setItem('lastname', response.data.user.lastname);
                 history.push('/')
                 history.go(0)
             })

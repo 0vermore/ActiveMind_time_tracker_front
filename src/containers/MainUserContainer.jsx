@@ -112,7 +112,7 @@ class MainUserContainer extends Component {
 		return (
 			<div>
 				<div className="header">
-					<h2>{localStorage.getItem('username')}</h2>
+					<h2>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</h2>
 				</div>
 				<div className="container">
 					{this.state.loading ? <Loader /> : (

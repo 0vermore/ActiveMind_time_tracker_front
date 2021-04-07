@@ -9,8 +9,10 @@ class LogoutContainer extends Component {
     componentWillMount() {
         this.props.dispatch(unauthenticated());
         localStorage.removeItem('token');
-        localStorage.removeItem('username');
+        localStorage.removeItem('firstname');
+        localStorage.removeItem('lastname');
         localStorage.removeItem('is_admin');
+        localStorage.removeItem('id');
         history.push('/')
         history.go(0)
     }
