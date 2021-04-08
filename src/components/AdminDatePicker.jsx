@@ -46,7 +46,7 @@ class AdminDatePicker extends Component {
         // if filters values not null set their ids on their names
         if (users_filter !== "") {
             let user_filt = users.find(user => user.id === parseInt(users_filter))
-            users_filter = user_filt.username;
+            users_filter = user_filt.firstname + ' ' + user_filt.lastname;
         }
         if (projects_filter !== "") {
             let project_filt = projects.find(project => project.id === parseInt(projects_filter))
@@ -64,13 +64,13 @@ class AdminDatePicker extends Component {
         for (let i = 0; i < notes_by_date.length; i++) {
             let note = notes_by_date[i];
             let user = users.find(user => user.id === note.user_id ||
-                user.username === note.user_id)
+                user.firstname + ' ' + user.lastname === note.user_id)
             let project = projects.find(project => project.id === note.project_id ||
                 project.project === note.project_id)
             let category = categories.find(category => category.id === note.category_id ||
                 category.category === note.category_id)
             if (user && project && category) {
-                note.user_id = user.username;
+                note.user_id = user.firstname + ' ' + user.lastname;
                 note.project_id = project.project;
                 note.category_id = category.category;
                 tmp_arr.push(note);

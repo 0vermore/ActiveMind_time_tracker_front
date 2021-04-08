@@ -42,7 +42,7 @@ class AdminFilters extends Component {
                             <FormControl value={this.state.user} as="select"
                                 onChange={this.onChangeUser}>
                                 <option value="">User</option>
-                                {users.map((user) => <option key={user.id} value={user.id}>{user.username}</option>)}
+                                {users.map((user) => <option key={user.id} value={user.id}>{user.firstname + ' ' + user.lastname}</option>)}
                             </FormControl>
                         </Col>
                         <Col sm={3} controlid="project">
