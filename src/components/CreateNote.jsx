@@ -23,7 +23,7 @@ class CreateNote extends Component {
 
     validateForm() {
         return this.state.project.length > 0 && this.state.category.length > 0 &&
-            this.state.hours > 0 && this.state.description.length > 0;
+            this.state.hours > 0;
     }
 
     onChangeProject(event) {
@@ -88,7 +88,7 @@ class CreateNote extends Component {
                 </Row>
                 <Row>
                     <Col controlid="description" sm>
-                        <FormControl required placeholder="Description"
+                        <FormControl required placeholder="Description (optional)"
                             value={this.state.description}
                             onChange={this.onChangeDescription} />
                     </Col>
