@@ -4,17 +4,17 @@ export function loadNotes(notes) {
     return { type: actions.LOAD_NOTES, notes: notes }
 }
 
-export function addNote(id, user, project, category, hours, date) {
+export function addNote(id, user, project, category, description, hours, date) {
     return {
         type: actions.ADD_NOTE, id: id, user: user, project: project,
-        category: category, hours: hours, date: date
+        category: category, description: description, hours: hours, date: date
     }
 }
 
-export function updateNote(index, project, category, hours, date) {
+export function updateNote(index, project, category, description, hours, date) {
     return {
         type: actions.UPDATE_NOTE, index: index,
-        project: project, category: category, hours: hours, date: date
+        project: project, category: category, description: description, hours: hours, date: date
     }
 }
 

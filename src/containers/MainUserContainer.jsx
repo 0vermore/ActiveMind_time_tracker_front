@@ -20,7 +20,7 @@ class MainUserContainer extends Component {
 	getAuthToken() {
 		var config = {
 			// baseURL: 'https://active-mind-api.herokuapp.com',
-			// baseURL: 'http://localhost:4000',
+			//baseURL: 'http://localhost:4000',
 			baseURL: 'https://portal.milestep.io',
 			headers: { 'Authorization': localStorage.getItem('token') }
 		}
@@ -38,13 +38,13 @@ class MainUserContainer extends Component {
 			.catch(error => console.log(error.message))
 	}
 
-	createNote = ({ user_id, project_id, category_id, hours, date }) => {
+	createNote = ({ user_id, project_id, category_id, description, hours, date }) => {
 
 		var config = this.getAuthToken();
 		axios.post('/api/notes', {
 			user_id: user_id,
 			project_id: project_id, category_id: category_id,
-			hours: hours, date: date
+			description: description, hours: hours, date: date
 		}, config)
 			.then(response => {
 				this.props.dispatch(addNote(response.data.id))
@@ -59,7 +59,8 @@ class MainUserContainer extends Component {
 
 		axios.put(`/api/notes/${params.id}`, {
 			project_id: params.project_id,
-			category_id: params.category_id, hours: params.hours, date: params.date
+			category_id: params.category_id, description: params.description,
+			hours: params.hours, date: params.date
 		}, config)
 			.then(response => {
 				this.props.dispatch(updateNote(params.id))

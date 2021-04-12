@@ -9,11 +9,13 @@ class CreateNote extends Component {
         this.state = {
             project: "",
             category: "",
+            description: "",
             hours: "",
             date: DT.now().toISODate()
         };
         this.onChangeProject = this.onChangeProject.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeHours = this.onChangeHours.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +23,7 @@ class CreateNote extends Component {
 
     validateForm() {
         return this.state.project.length > 0 && this.state.category.length > 0 &&
-            this.state.hours > 0;
+            this.state.hours > 0 && this.state.description.length > 0;
     }
 
     onChangeProject(event) {
@@ -31,6 +33,9 @@ class CreateNote extends Component {
     onChangeCategory(event) {
         console.log("Category selected!")
         this.setState({ category: event.target.value });
+    }
+    onChangeDescription(event) {
+        this.setState({ description: event.target.value });
     }
     onChangeHours(event) {
         this.setState({ hours: event.target.value });
@@ -43,11 +48,11 @@ class CreateNote extends Component {
         event.preventDefault();
         console.log({
             project_id: this.state.project, category_id: this.state.category,
-            hours: this.state.hours, date: this.state.date
+            description: this.state.description, hours: this.state.hours, date: this.state.date
         })
         this.props.handleSubmit({
             project_id: this.state.project, category_id: this.state.category,
-            hours: this.state.hours, date: this.state.date
+            description: this.state.description, hours: this.state.hours, date: this.state.date
         })
     }
 
@@ -57,30 +62,37 @@ class CreateNote extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <Row>
-                    <Col controlid="date" sm={2}>
+                    <Col controlid="date" sm>
                         <FormControl controlid="date" type="date" required
                             value={this.state.date} onChange={this.onChangeDate} />
                     </Col>
-                    <Col controlid="project" sm={3}>
+                    <Col controlid="project" sm>
                         <FormControl value={this.state.project} as="select"
                             onChange={this.onChangeProject}>
                             <option value="">Project</option>
                             {projects.map((project) => <option key={project.id} value={project.id}>{project.project}</option>)}
                         </FormControl>
                     </Col>
-                    <Col controlid="category" sm={3}>
+                    <Col controlid="category" sm>
                         <FormControl value={this.state.category} as="select"
                             onChange={this.onChangeCategory}>
                             <option value="">Category</option>
                             {categories.map((category) => (<option key={category.id} value={category.id}>{category.category}</option>))}
                         </FormControl>
                     </Col>
-                    <Col controlid="hours" sm={2}>
+                    <Col controlid="hours" sm>
                         <FormControl required placeholder="Hours"
                             value={this.state.hours}
                             onChange={this.onChangeHours} />
                     </Col>
-                    <Col sm={2}>
+                </Row>
+                <Row>
+                    <Col controlid="description" sm>
+                        <FormControl required placeholder="Description"
+                            value={this.state.description}
+                            onChange={this.onChangeDescription} />
+                    </Col>
+                    <Col sm={3}>
                         <Button block disabled={!this.validateForm()} type="submit">
                             Save
                     </Button>

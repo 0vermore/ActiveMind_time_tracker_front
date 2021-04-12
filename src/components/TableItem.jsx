@@ -15,6 +15,7 @@ class TableItem extends Component {
             <tr key={note.id} id={note.id}>
                 <td>{note.project_id}</td>
                 <td>{note.category_id}</td>
+                <td>{note.description}</td>
                 <td>{note.hours}</td>
                 <td>
                     <ModalContainer className="taskLabel" note={note}

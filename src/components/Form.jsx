@@ -7,11 +7,13 @@ export class Form extends Component {
         this.state = {
             project: "",
             category: "",
+            description: this.props.note.description,
             hours: this.props.note.hours,
             date: this.props.note.date
         };
         this.onChangeProject = this.onChangeProject.bind(this);
         this.onChangeCategory = this.onChangeCategory.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeHours = this.onChangeHours.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +21,7 @@ export class Form extends Component {
 
     validateForm() {
         return this.state.project.length > 0 && this.state.category.length > 0 &&
-            this.state.hours > 0;
+            this.state.hours > 0 && this.state.description.length > 0;
     }
 
     onChangeProject(event) {
@@ -27,6 +29,9 @@ export class Form extends Component {
     }
     onChangeCategory(event) {
         this.setState({ category: event.target.value });
+    }
+    onChangeDescription(event) {
+        this.setState({ description: event.target.value });
     }
     onChangeHours(event) {
         this.setState({ hours: event.target.value });
@@ -39,12 +44,12 @@ export class Form extends Component {
         event.preventDefault();
         console.log({
             id: this.props.note.id, project_id: this.state.project,
-            category_id: this.state.category,
+            category_id: this.state.category, description: this.state.description,
             hours: this.state.hours, date: this.state.date
         })
         this.props.onSubmit({
             id: this.props.note.id, project_id: this.state.project,
-            category_id: this.state.category,
+            category_id: this.state.category, description: this.state.description,
             hours: this.state.hours, date: this.state.date
         })
         this.props.closeModal();
@@ -68,6 +73,12 @@ export class Form extends Component {
                         <option value="">Category</option>
                         {categories.map((category) => (<option key={category.id} value={category.id}>{category.category}</option>))}
                     </FormControl>
+                </FormGroup>
+                <FormGroup controlid="description">
+                    <FormControl required placeholder="Description"
+                        value={this.state.description}
+                        onChange={this.onChangeDescription} 
+                        type="text"/>
                 </FormGroup>
                 <FormGroup controlid="hours">
                     <FormControl required placeholder="Hours"

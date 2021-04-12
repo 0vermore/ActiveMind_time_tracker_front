@@ -16,6 +16,7 @@ function notesReducer(state = [], action) {
                     user_id: action.user_id,
                     project_id: action.project_id,
                     category_id: action.category_id,
+                    description: action.description,
                     hours: action.hours,
                     date: action.date
                 }
@@ -29,6 +30,7 @@ function notesReducer(state = [], action) {
                     ...note,
                     project_id: action.project_id,
                     category_id: action.category_id,
+                    description: action.description,
                     hours: action.hours, date: action.date
                 }
                 : note

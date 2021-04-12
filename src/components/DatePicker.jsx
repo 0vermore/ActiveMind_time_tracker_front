@@ -88,6 +88,7 @@ class DatePicker extends Component {
                 <Row>
                     <Col></Col>
                     <Col></Col>
+                    <Col></Col>
                     <Col className="total"><h6 className="totalText">Total: {total}</h6></Col>
                     <Col></Col>
                 </Row>

@@ -12,6 +12,7 @@ class AdminNotesTable extends Component {
                         <th>User</th>
                         <th>Project</th>
                         <th>Category</th>
+                        <th>Description</th>
                         <th>Hours</th>
                         <th>Actions</th>
                     </tr>

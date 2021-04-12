@@ -19,7 +19,7 @@ class MainAdminContainer extends Component {
 	getAuthToken() {
 		var config = {
 			baseURL: 'https://portal.milestep.io',
-			// baseURL: 'http://localhost:4000',
+			//baseURL: 'http://localhost:4000',
 			// baseURL: 'https://active-mind-api.herokuapp.com',
 			headers: { 'Authorization': localStorage.getItem('token') }
 		}
@@ -42,7 +42,8 @@ class MainAdminContainer extends Component {
 
 		axios.put(`/api/notes/${params.id}`, {
 			project_id: params.project_id,
-			category_id: params.category_id, hours: params.hours, date: params.date
+			category_id: params.category_id, description: params.description, 
+			hours: params.hours, date: params.date
 		}, config)
 			.then(response => {
 				this.props.dispatch(updateNote(params.id))
