@@ -75,7 +75,7 @@ export class Form extends Component {
                     </FormControl>
                 </FormGroup>
                 <FormGroup controlid="description">
-                    <FormControl required placeholder="Description"
+                    <FormControl placeholder="Description"
                         value={this.state.description}
                         onChange={this.onChangeDescription} 
                         type="text"/>

@@ -88,7 +88,7 @@ class CreateNote extends Component {
                 </Row>
                 <Row>
                     <Col controlid="description" sm>
-                        <FormControl required placeholder="Description (optional)"
+                        <FormControl placeholder="Description (optional)"
                             value={this.state.description}
                             onChange={this.onChangeDescription} />
                     </Col>
