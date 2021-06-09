@@ -112,9 +112,6 @@ class AdminDatePicker extends Component {
                     <AdminNotesTable notes={filtred_notes}
                         projects={projects}
                         categories={categories}
-                        users_filter={users_filter}
-                        projects_filter={projects_filter}
-                        categories_filter={categories_filter}
                         deleteNote={this.props.deleteNote}
                         updateNote={this.props.updateNote} />
                 </div>
