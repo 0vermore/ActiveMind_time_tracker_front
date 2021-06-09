@@ -113,7 +113,7 @@ input[placeholder] {
 .container {
 	height: 800px;
 	position: relative;
-	margin: 0 auto;
+	margin-top: 5%;
 	border-radius: 5px;
 }
 

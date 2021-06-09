@@ -108,9 +108,6 @@ class MainAdminContainer extends Component {
 	render() {
 		return (
 			<div>
-				<div className="header">
-					<h2>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</h2>
-				</div>
 				<div className="container">
 					{this.state.loading ? <Loader /> : (
 						<AdminFilters
