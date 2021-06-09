@@ -5,6 +5,7 @@ import App from './App';
 import Login from './containers/LoginContainer';
 import Logout from './containers/LogoutContainer';
 import Settings from './containers/SettingsContainer';
+import Reports from './containers/ReportsContainer';
 import NotFound from './components/NotFound';
 import SiteNavbar from './components/SiteNavbar.jsx';
 import configureStore from './store';
@@ -33,6 +34,7 @@ ReactDOM.render(
                   <Route path="/login" component={Login}/>
                   <Route path="/logout" component={Logout}/>
                   <Route path="/settings" component={Settings}/>
+                  <Route path="/reports" component={Reports}/>
                   <Route component={NotFound}/>
               </Switch>
           </div>
