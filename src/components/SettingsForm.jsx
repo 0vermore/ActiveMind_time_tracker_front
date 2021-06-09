@@ -30,7 +30,6 @@ class SettingsForm extends Component {
         return (
             <div className="Login">
                 <form onSubmit={this.handleSubmit}>
-                    <FormLabel><h3>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</h3></FormLabel>
                     <FormGroup controlId="password" bssize="large">
                         <FormLabel>New password:</FormLabel>
                         <FormControl

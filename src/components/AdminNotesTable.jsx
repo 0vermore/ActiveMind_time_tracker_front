@@ -24,10 +24,7 @@ class AdminNotesTable extends Component {
                                 updateNote={this.props.updateNote}
                                 deleteNote={this.props.deleteNote}
                                 projects={this.props.projects}
-                                categories={this.props.categories}
-                                users_filter={this.props.users_filter}
-                                projects_filter={this.props.projects_filter}
-                                categories_filter={this.props.categories_filter}/>
+                                categories={this.props.categories}/>
                         );
                     })}
                 </tbody>

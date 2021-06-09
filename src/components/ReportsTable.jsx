@@ -1,41 +1,13 @@
 import React, { Component } from 'react'
-import { Row, Col, FormControl } from 'react-bootstrap'
-import { DateTime as DT } from 'luxon'
-import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs"
+import { Row, Col } from 'react-bootstrap'
 import AdminNotesTable from './AdminNotesTable'
 
-class AdminDatePicker extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            date: DT.now().toISODate()
-        };
-        this.onChangeDate = this.onChangeDate.bind(this);
-        this.onDatePlus = this.onDatePlus.bind(this);
-        this.onDateMinus = this.onDateMinus.bind(this);
-    };
-
-    onChangeDate(event) {
-        this.setState({ date: event.target.value });
-    }
-
-    onDatePlus(event) {
-        let dt = DT.fromISO(this.state.date)
-        let new_dt = dt.plus({ days: 1 })
-        this.setState({ date: new_dt.toISODate() });
-    }
-
-    onDateMinus(event) {
-        let dt = DT.fromISO(this.state.date)
-        let new_dt = dt.minus({ days: 1 })
-        this.setState({ date: new_dt.toISODate() });
-    }
-
+class ReportsTable extends Component {
     render() {
         let total = 0;
         let users_filter = this.props.users_filter;
         let projects_filter = this.props.projects_filter;
-        let categories_filter = this.props.categories_filter;
+        let monthYear_filter = this.props.monthYear_filter;
 
         const tmp_arr = []
         const notes = this.props.notes;
@@ -52,13 +24,8 @@ class AdminDatePicker extends Component {
             let project_filt = projects.find(project => project.id === parseInt(projects_filter))
             projects_filter = project_filt.project;
         }
-        if (categories_filter !== "") {
-            let category_filt = categories.find(category => category.id === parseInt(categories_filter))
-            categories_filter = category_filt.category;
-        }
 
-
-        const notes_by_date = notes.filter(note => note.date === this.state.date)
+        const notes_by_date = notes.filter(note => note.date.includes(monthYear_filter))
 
         // change users, projects, categories ids in note on their names
         for (let i = 0; i < notes_by_date.length; i++) {
@@ -81,8 +48,7 @@ class AdminDatePicker extends Component {
         let filtred_notes = [];
         for (let i = 0; i < tmp_arr.length; i++) {
             if (tmp_arr[i].user_id.indexOf(users_filter) > -1 &&
-                tmp_arr[i].project_id.indexOf(projects_filter) > -1 &&
-                tmp_arr[i].category_id.indexOf(categories_filter) > -1) {
+                tmp_arr[i].project_id.indexOf(projects_filter) > -1) {
                 filtred_notes.push(tmp_arr[i]);
             }
         }
@@ -94,21 +60,7 @@ class AdminDatePicker extends Component {
 
         return (
             <div>
-                <form className="datePickerForm">
-                    <Row>
-                        <Col className="btnArrowLeft">
-                            <BsFillCaretLeftFill className="btnLeft" onClick={this.onDateMinus} />
-                        </Col>
-                        <Col>
-                            <FormControl controlid="date" type="date" required
-                                value={this.state.date} onChange={this.onChangeDate} />
-                        </Col>
-                        <Col className="btnArrowRight">
-                            <BsFillCaretRightFill className="btnRight" onClick={this.onDatePlus} />
-                        </Col>
-                    </Row>
-                </form>
-                <div className="noteTable">
+                <div className="reportsTable">
                     <AdminNotesTable notes={filtred_notes}
                         projects={projects}
                         categories={categories}
@@ -128,4 +80,4 @@ class AdminDatePicker extends Component {
     }
 }
 
-export default AdminDatePicker
+export default ReportsTable
