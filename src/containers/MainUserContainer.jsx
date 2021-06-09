@@ -112,9 +112,6 @@ class MainUserContainer extends Component {
 	render() {
 		return (
 			<div>
-				<div className="header">
-					<h2>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</h2>
-				</div>
 				<div className="container">
 					{this.state.loading ? <Loader /> : (
 						<CreateNote projects={this.props.projects}

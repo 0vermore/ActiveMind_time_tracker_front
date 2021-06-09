@@ -89,7 +89,7 @@ class DatePicker extends Component {
                     <Col></Col>
                     <Col></Col>
                     <Col></Col>
-                    <Col className="total"><h6 className="totalText">Total: {total}</h6></Col>
+                    <Col className="total"><h6 className="totalText">Total: {total.toFixed(1)}</h6></Col>
                     <Col></Col>
                 </Row>
             </div >
