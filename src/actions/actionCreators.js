@@ -30,9 +30,15 @@ export function loadProjects(projects) {
 
 //--------------------------------------------
 
+export function loadUser(user) {
+    return { type: actions.LOAD_USER, user: user.user }
+}
+
+
 export function loadCategories(categories) {
     return { type: actions.LOAD_CATEGORIES, categories: categories }
 }
+
 
 //--------------------------------------------
 

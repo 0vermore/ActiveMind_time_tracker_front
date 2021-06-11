@@ -168,6 +168,7 @@ input[placeholder] {
 	margin-left: 10px;
 	opacity: 0.6;
 	font-size: 1.2em;
+	cursor: pointer;
 }
 
 .deleteBtn:hover{

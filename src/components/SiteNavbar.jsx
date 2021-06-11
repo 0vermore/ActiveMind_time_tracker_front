@@ -18,6 +18,9 @@ class SiteNavbar extends Component {
                         {this.props.auth.authenticated === true &&
                             <Navbar.Brand>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</Navbar.Brand>
                         }
+                        {localStorage.getItem('is_admin') === 'true' && 
+                            <Navbar.Brand><Link to="/manage">Manage</Link></Navbar.Brand>
+                        }
                         {this.props.auth.authenticated === true &&
                             <Navbar.Brand><Link to="/settings">Settings</Link></Navbar.Brand>
                         }
