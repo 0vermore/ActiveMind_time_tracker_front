@@ -5,40 +5,47 @@ import App from './App';
 import Login from './containers/LoginContainer';
 import Logout from './containers/LogoutContainer';
 import Settings from './containers/SettingsContainer';
-import Reports from './containers/ReportsContainer';
 import NotFound from './components/NotFound';
 import SiteNavbar from './components/SiteNavbar.jsx';
+import Session from './components/Session.jsx';
+import Manage from './containers/ManageContainer';
 import configureStore from './store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { authenticated, unauthenticated} from './actions/actionCreators.js';
+import { authenticated, unauthenticated } from './actions/actionCreators.js';
 import reportWebVitals from './reportWebVitals';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const store = configureStore();
 
 const token = localStorage.getItem('token');
-if(token){
+if (token) {
   store.dispatch(authenticated())
 }
-else{
+else {
   store.dispatch(unauthenticated())
 }
 
+
+
 ReactDOM.render(
   <Provider store={store}>
-      <BrowserRouter> 
-          <div>
-              <SiteNavbar/>
-              <Switch>
-                  <Route exact path='/' component={App}/>
-                  <Route path="/login" component={Login}/>
-                  <Route path="/logout" component={Logout}/>
-                  <Route path="/settings" component={Settings}/>
-                  <Route path="/reports" component={Reports}/>
-                  <Route component={NotFound}/>
-              </Switch>
-          </div>
-      </BrowserRouter>    
+    <BrowserRouter>
+      <div>
+        <ToastContainer />
+        <Session />
+        <SiteNavbar />
+        <Switch>
+          <Route exact path='/' component={App} />
+          <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/manage" component={Manage} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
