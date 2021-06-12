@@ -10,20 +10,21 @@ class App extends Component {
 
   render() {
     if (this.props.auth.authenticated === false) {
-      return <LoginContainer/>
+      return <LoginContainer />
     }
 
-    if (localStorage.getItem('is_admin') === "true"){
-      return <MainAdminContainer/>
+    if (localStorage.getItem('is_admin') === "true") {
+      return <MainAdminContainer />
     }
-    else{
-      return <MainUserContainer/>
+    else {
+      return <MainUserContainer />
     }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user.user,
     auth: state.auth
   }
 }
