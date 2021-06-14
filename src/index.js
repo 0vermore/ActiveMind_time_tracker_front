@@ -13,6 +13,7 @@ import configureStore from './store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { authenticated, unauthenticated } from './actions/actionCreators.js';
+import Reports from './containers/ReportsContainer';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,6 +42,7 @@ ReactDOM.render(
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/settings" component={Settings} />
+          <Route path="/report" component={Reports} />
           <Route path="/manage" component={Manage} />
           <Route component={NotFound} />
         </Switch>
