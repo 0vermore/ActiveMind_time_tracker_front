@@ -42,7 +42,7 @@ ReactDOM.render(
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/settings" component={Settings} />
-          <Route path="/report" component={Reports} />
+          <Route path="/reports" component={Reports} />
           <Route path="/manage" component={Manage} />
           <Route component={NotFound} />
         </Switch>
