@@ -18,9 +18,7 @@ class ReportsContainer extends Component {
 
     getAuthToken() {
         var config = {
-            baseURL: 'https://portal.milestep.io',
-            // baseURL: 'http://localhost:4000',
-            // baseURL: 'https://active-mind-api.herokuapp.com',
+            baseURL: `${process.env.REACT_APP_BASE_URL}`,
             headers: { 'Authorization': localStorage.getItem('token') }
         }
         return config;

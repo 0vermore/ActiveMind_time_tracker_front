@@ -230,3 +230,15 @@ input[placeholder] {
 .filtersInput{
 	text-align: left;
 }
+
+.reportsTable{
+	text-align: center;
+	overflow: auto;
+	max-height: 30em;
+	margin-top: 2em;
+}
+
+.reportsLabel{
+	padding-top: 0.2em;
+	font-size: 1.6em;
+}

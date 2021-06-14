@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Row, FormControl } from 'react-bootstrap'
 
-
 class CreateProject extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +8,11 @@ class CreateProject extends Component {
       project: "",
     };
     this.onChangeProject = this.onChangeProject.bind(this);
-
   }
-
 
   onChangeProject(event) {
     this.setState({ project: event.target.value });
   }
-
 
   handleSubmit = e => {
     e.preventDefault()
@@ -36,7 +32,6 @@ class CreateProject extends Component {
           Create
         </Button>
       </form>
-
     );
   }
 }

@@ -25,7 +25,6 @@ const danger_notify = (error) => toast.error(error, {
 })
 
 class ManageContainer extends Component {
-
     getCurrentUser() {
         var config = this.getAuthToken()
         axios.post('/api/signin', config)
@@ -124,7 +123,6 @@ class ManageContainer extends Component {
 
     deleteUser = (id) => {
         var config = this.getAuthToken();
-
         axios.delete(`/api/users/${id}`, config)
             .then(response => {
                 history.go(0)
@@ -134,7 +132,6 @@ class ManageContainer extends Component {
 
     deleteCategory = (id) => {
         var config = this.getAuthToken();
-
         axios.delete(`/api/categories/${id}`, config)
             .then(response => {
                 history.go(0)
@@ -144,7 +141,6 @@ class ManageContainer extends Component {
 
     deleteProject = (id) => {
         var config = this.getAuthToken();
-
         axios.delete(`/api/projects/${id}`, config)
             .then(response => {
                 history.go(0)
