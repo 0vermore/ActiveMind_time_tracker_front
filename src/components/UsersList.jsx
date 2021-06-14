@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { BsFillTrashFill } from "react-icons/bs"
 
-
 class UsersList extends Component {
   render() {
     return (

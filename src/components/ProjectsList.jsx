@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { BsFillTrashFill } from "react-icons/bs"
 
 class ProjectsList extends Component {
-
   render() {
     return (
       <div className="border border-secondary rounded">

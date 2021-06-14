@@ -3,10 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { loadUser } from '../actions/actionCreators'
 
-
-
 class Session extends Component {
-  
     componentDidMount() {
       this.getCurrentUser()
     }
@@ -29,7 +26,6 @@ class Session extends Component {
       }
       return config;
     }
-
     render() {
       return (<div></div>)}
   }

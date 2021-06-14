@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Row, FormControl } from 'react-bootstrap'
 
-
 class CreateUser extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +15,6 @@ class CreateUser extends Component {
     this.onChangeLastname = this.onChangeLastname.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
   }
-
 
   onChangeEmail(event) {
     this.setState({ email: event.target.value });

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Row, FormControl } from 'react-bootstrap'
 
-
 class CreateCategory extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +8,11 @@ class CreateCategory extends Component {
       category: "",
     };
     this.onChangeCategory = this.onChangeCategory.bind(this);
-
   }
-
 
   onChangeCategory(event) {
     this.setState({ category: event.target.value });
   }
-
 
   handleSubmit = e => {
     e.preventDefault()
