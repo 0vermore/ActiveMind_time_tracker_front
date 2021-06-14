@@ -9,14 +9,17 @@ class SiteNavbar extends Component {
         return (
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Navbar.Brand><Link to="/">MileStep Portal</Link></Navbar.Brand>
+                {this.props.auth.authenticated === true &&
+                            <Navbar.Brand>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</Navbar.Brand>
+                }
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ml-auto">
                         {this.props.auth.authenticated === false &&
                             <Navbar.Brand><Link to="/login">Login</Link></Navbar.Brand>
                         }
-                        {this.props.auth.authenticated === true &&
-                            <Navbar.Brand>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</Navbar.Brand>
+                        {this.props.auth.authenticated === true && localStorage.getItem('is_admin') === "true" &&
+                            <Navbar.Brand><Link to="/reports">Reports</Link></Navbar.Brand>
                         }
                         {localStorage.getItem('is_admin') === 'true' && 
                             <Navbar.Brand><Link to="/manage">Manage</Link></Navbar.Brand>

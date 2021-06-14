@@ -7,7 +7,9 @@ import { createBrowserHistory } from 'history'
 import { loadUser } from '../actions/actionCreators'
 
 const history = createBrowserHistory();
-axios.defaults.baseURL = `${process.env.REACT_APP_BASE_URL}`;
+axios.defaults.baseURL = 'https://portal.milestep.io';
+// axios.defaults.baseURL = 'http://localhost:4000';
+// axios.defaults.baseURL = 'https://active-mind-api.herokuapp.com';
 axios.defaults.timeout = 10000;
 axios.defaults.headers = { 'Access-Control-Allow-Origin': '*' }
 
