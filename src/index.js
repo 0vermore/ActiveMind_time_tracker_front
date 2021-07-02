@@ -7,6 +7,7 @@ import Logout from './containers/LogoutContainer';
 import Settings from './containers/SettingsContainer';
 import NotFound from './components/NotFound';
 import SiteNavbar from './components/SiteNavbar.jsx';
+import Session from './components/Session.jsx';
 import Manage from './containers/ManageContainer';
 import configureStore from './store';
 import { Provider } from 'react-redux';
@@ -14,6 +15,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { authenticated, unauthenticated } from './actions/actionCreators.js';
 import Reports from './containers/ReportsContainer';
 import reportWebVitals from './reportWebVitals';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const store = configureStore();
@@ -32,6 +34,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
+        <ToastContainer />
+        <Session />
         <SiteNavbar />
         <Switch>
           <Route exact path='/' component={App} />
