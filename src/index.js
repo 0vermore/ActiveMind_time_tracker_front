@@ -14,7 +14,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { authenticated, unauthenticated } from './actions/actionCreators.js';
 import Reports from './containers/ReportsContainer';
 import reportWebVitals from './reportWebVitals';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const store = configureStore();
@@ -33,7 +32,6 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <ToastContainer />
         <SiteNavbar />
         <Switch>
           <Route exact path='/' component={App} />
