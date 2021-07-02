@@ -16,22 +16,16 @@ class DatePicker extends Component {
     };
 
     onChangeDate(event) {
-        console.log("Date is: ")
-        console.log(this.state.date)
         this.setState({ date: event.target.value });
     }
 
     onDatePlus(event) {
-        console.log("Date is: ")
-        console.log(this.state.date)
         let dt = DT.fromISO(this.state.date)
         let new_dt = dt.plus({ days: 1 })
         this.setState({ date: new_dt.toISODate() });
     }
 
     onDateMinus(event) {
-        console.log("Date is: ")
-        console.log(this.state.date)
         let dt = DT.fromISO(this.state.date)
         let new_dt = dt.minus({ days: 1 })
         this.setState({ date: new_dt.toISODate() });
@@ -48,12 +42,6 @@ class DatePicker extends Component {
             let note = notes_by_date[i];
             let project = projects.find(project => project.id === note.project_id || project.project === note.project_id)
             let category = categories.find(category => category.id === note.category_id || category.category === note.category_id)
-            console.log("Note:")
-            console.log(note)
-            console.log("Project:")
-            console.log(project)
-            console.log("Category:")
-            console.log(category)
             if (project && category) {
                 note.project_id = project.project
                 note.category_id = category.category

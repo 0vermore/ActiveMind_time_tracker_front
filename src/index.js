@@ -11,7 +11,7 @@ import Session from './components/Session.jsx';
 import Manage from './containers/ManageContainer';
 import configureStore from './store';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { authenticated, unauthenticated } from './actions/actionCreators.js';
 import Reports from './containers/ReportsContainer';
 import reportWebVitals from './reportWebVitals';
@@ -44,7 +44,8 @@ ReactDOM.render(
           <Route path="/settings" component={Settings} />
           <Route path="/reports" component={Reports} />
           <Route path="/manage" component={Manage} />
-          <Route component={NotFound} />
+          <Route path="/404" component={NotFound} />
+            <Redirect to="/404" />
         </Switch>
       </div>
     </BrowserRouter>

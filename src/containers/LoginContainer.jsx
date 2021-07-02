@@ -5,6 +5,7 @@ import LoginForm from '../components/LoginForm'
 import { unauthenticated } from '../actions/actionCreators'
 import { createBrowserHistory } from 'history'
 import { loadUser } from '../actions/actionCreators'
+import { toast } from 'react-toastify'
 
 const history = createBrowserHistory();
 axios.defaults.baseURL = 'https://portal.milestep.io';
@@ -32,8 +33,15 @@ class LoginContainer extends Component {
                 history.go(0)
             })
             .catch(error => {
-                console.log(error.message);
                 this.props.dispatch(unauthenticated('Login failed'));
+                toast.error('Wrong email or password!', {
+                    position: "bottom-center",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true
+                    })
             })
     }
 

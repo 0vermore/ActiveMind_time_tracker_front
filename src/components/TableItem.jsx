@@ -9,8 +9,6 @@ class TableItem extends Component {
 
     render() {
         const note = this.props.note
-        console.log("TableItem:")
-        console.log(note.id)
         return (
             <tr key={note.id} id={note.id}>
                 <td>{note.project_id}</td>

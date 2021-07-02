@@ -27,11 +27,9 @@ class CreateNote extends Component {
     }
 
     onChangeProject(event) {
-        console.log("Project selected!")
         this.setState({ project: event.target.value });
     }
     onChangeCategory(event) {
-        console.log("Category selected!")
         this.setState({ category: event.target.value });
     }
     onChangeDescription(event) {
@@ -46,10 +44,6 @@ class CreateNote extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log({
-            project_id: this.state.project, category_id: this.state.category,
-            description: this.state.description, hours: this.state.hours, date: this.state.date
-        })
         this.props.handleSubmit({
             project_id: this.state.project, category_id: this.state.category,
             description: this.state.description, hours: this.state.hours, date: this.state.date

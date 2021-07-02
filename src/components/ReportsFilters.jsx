@@ -29,7 +29,6 @@ class ReportsFilters extends Component {
     }
 
     render() {
-        console.log(this.state.monthYear)
         const users = this.props.users.filter(user => user.is_admin !== true);
         const projects = this.props.projects;
         const categories = this.props.categories;

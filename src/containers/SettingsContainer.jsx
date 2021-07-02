@@ -20,14 +20,10 @@ class SettingsContainer extends Component {
     handleSubmit = (params) => {
         var config = this.getAuthToken();
 
-        console.log('Password data:')
-        console.log({ password: params.password })
         axios.put(`/api/setup/${localStorage.getItem('id')}`, {
                 password: params.password
             }, config)
             .then(response => {
-                console.log("User password successfully updated!")
-                console.log(response.data)
                 history.push('/')
                 history.go(0)
             })

@@ -42,11 +42,6 @@ export class Form extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log({
-            id: this.props.note.id, project_id: this.state.project,
-            category_id: this.state.category, description: this.state.description,
-            hours: this.state.hours, date: this.state.date
-        })
         this.props.onSubmit({
             id: this.props.note.id, project_id: this.state.project,
             category_id: this.state.category, description: this.state.description,

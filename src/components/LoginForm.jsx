@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Alert } from 'react-bootstrap'
 
 class LoginForm extends Component {
     constructor(props) {
@@ -13,7 +12,7 @@ class LoginForm extends Component {
     }
 
     validateForm() {
-        return this.state.email.length > 1;
+        return this.state.email.length >= 5 && this.state.password.length >= 6
     }
 
     handleChange = event => {
@@ -31,13 +30,6 @@ class LoginForm extends Component {
         return (
             <div className="Login">
                 <form onSubmit={this.handleSubmit}>
-                    {this.props.auth.error !== undefined &&
-                        <FormGroup bsSize="large">
-                            <Alert variant="danger">
-                                <strong>{this.props.auth.error}</strong>
-                            </Alert>
-                        </FormGroup>
-                    }
                     <FormGroup controlId="email" bssize="large">
                         <FormLabel>Email</FormLabel>
                         <FormControl
