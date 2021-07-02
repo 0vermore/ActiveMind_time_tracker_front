@@ -7,7 +7,6 @@ import Logout from './containers/LogoutContainer';
 import Settings from './containers/SettingsContainer';
 import NotFound from './components/NotFound';
 import SiteNavbar from './components/SiteNavbar.jsx';
-import Session from './components/Session.jsx';
 import Manage from './containers/ManageContainer';
 import configureStore from './store';
 import { Provider } from 'react-redux';
@@ -35,7 +34,6 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <ToastContainer />
-        <Session />
         <SiteNavbar />
         <Switch>
           <Route exact path='/' component={App} />
