@@ -1,244 +1,253 @@
 body {
-	margin: 0;
-	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-	  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-	  sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
 
 hr {
-	position: relative;
-	background-color:cadetblue;
+  position: relative;
+  background-color: cadetblue;
 }
-  
-  *,
-  *:before,
-  *:after {
-	box-sizing: inherit;
-  }
-  
-  .App {
-	width: 90%;
-	max-width: 700px;
-	margin: 2em auto;
-  }
-  p.lorem-text {
-	text-align: justify;
-  }
-  
-  .modal-cover {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 10;
-	transform: translateZ(0);
-	background-color: rgba(0, 0, 0, 0.8);
-  }
-  
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.App {
+  width: 90%;
+  max-width: 700px;
+  margin: 2em auto;
+}
+
+.row {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+	justify-content: center;
+}
+
+.modal-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform: translateZ(0);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (min-width: 500px) {
+  /* Center the Modal! */
   .modal-area {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	padding: 2.5em 1.5em 1.5em 1.5em;
-	background-color: #ffffff;
-	box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
-	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
+    left: 50%;
+    top: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    max-width: 30em;
+    max-height: calc(100% - 1em);
   }
-  
-  @media screen and (min-width: 500px) {
-	/* Center the Modal! */
-	.modal-area {
-	  left: 50%;
-	  top: 50%;
-	  height: auto;
-	  transform: translate(-50%, -50%);
-	  max-width: 30em;
-	  max-height: calc(100% - 1em);
-	}
-  }
-  
-  ._modal-close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 0.5em;
-	line-height: 1;
-	background: #f6f6f7;
-	border: 0;
-	box-shadow: 0;
-	cursor: pointer;
-  }
-  
-  ._modal-close-icon {
-	width: 25px;
-	height: 25px;
-	fill: transparent;
-	stroke: black;
-	stroke-linecap: round;
-	stroke-width: 2;
-  }
-  
-  .modal-body {
-	padding-top: 0.25em;
-  }
-  ._hide-visual {
-	border: 0 !important;
-	clip: rect(0 0 0 0) !important;
-	height: 1px !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
-	white-space: nowrap !important;
-  }
-  
-  .scroll-lock {
-	overflow: hidden;
-	margin-right: 17px;
-  }
+}
+
+._modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+  line-height: 1;
+  background: #f6f6f7;
+  border: 0;
+  box-shadow: 0;
+  cursor: pointer;
+}
+
+._modal-close-icon {
+  width: 25px;
+  height: 25px;
+  fill: transparent;
+  stroke: black;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.modal-body {
+  padding-top: 0.25em;
+}
+._hide-visual {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+.scroll-lock {
+  overflow: hidden;
+  margin-right: 17px;
+}
 
 input[placeholder] {
-	font-size: 1.1em;
+  font-size: 1.1em;
 }
 
 .container {
-	height: 800px;
-	position: relative;
-	margin-top: 5%;
-	border-radius: 5px;
+  height: 800px;
+  position: relative;
+  margin-top: 5%;
+  border-radius: 5px;
 }
 
 .header {
-	color: black;
-	padding: 2em;
-	text-align: left;
-	font-family: Tahoma, sans-serif;
+  color: black;
+  padding: 2em;
+  text-align: left;
+  font-family: Tahoma, sans-serif;
 }
 
 .inputContainer {
-	padding: 15px;
+  padding: 15px;
 }
 
 .inputContainer {
-	padding: 10px;
-	width: 100%;
-	border-radius: 25px;
-	box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  border-radius: 25px;
+  box-sizing: border-box;
 }
 
 .alert {
-	margin: 0 auto;
-	max-width: 480px;
+  margin: 0 auto;
+  max-width: 480px;
 }
 
 .Login {
-	padding: 60px 0;
+  padding: 60px 0;
 }
 
 .Login form {
-	margin: 0 auto;
-	max-width: 320px;
+  margin: 0 auto;
+  max-width: 320px;
 }
 
-.datePicker{
-	padding-top: 6em;
+.datePicker {
+  padding-top: 6em;
 }
 
-.datePickerForm{
-	text-align: center;
-	padding-bottom: 2em;
+.datePickerForm {
+  text-align: center;
+  padding-bottom: 2em;
 }
 
-.noteTable{
-	text-align: center;
-	overflow: auto;
-	max-height: 30em;
+.noteTable {
+  text-align: center;
+  overflow: auto;
+  max-height: 30em;
 }
 
-.deleteBtn{
-	margin-left: 10px;
-	opacity: 0.6;
-	font-size: 1.2em;
-	cursor: pointer;
+.deleteBtn {
+  margin-left: 10px;
+  opacity: 0.6;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
-.deleteBtn:hover{
-	opacity: 1;
+.deleteBtn:hover {
+  opacity: 1;
 }
 
-.editBtn{
-	margin-right: 10px;
-	opacity: 0.6;
-	font-size: 1.2em;
+.editBtn {
+  margin-right: 10px;
+  opacity: 0.6;
+  font-size: 1.2em;
 }
 
-.editBtn:hover{
-	opacity: 1;
+.editBtn:hover {
+  opacity: 1;
 }
 
-.btnLeft{
-	opacity: 0.6;
-	font-size: 1.6em;
+.btnLeft {
+  opacity: 0.6;
+  font-size: 1.6em;
 }
 
-.btnLeft:hover{
-	opacity: 1;
+.btnLeft:hover {
+  opacity: 1;
 }
 
-.btnRight{
-	opacity: 0.6;
-	font-size: 1.6em;
+.btnRight {
+  opacity: 0.6;
+  font-size: 1.6em;
 }
 
-.btnRight:hover{
-	opacity: 1;
+.btnRight:hover {
+  opacity: 1;
 }
 
-.btnArrowRight{
-	padding-top: 0.4em;
-	text-align: left;
+.btnArrowRight {
+  padding-top: 0.4em;
+  text-align: left;
 }
 
-.btnArrowLeft{
-	padding-top: 0.4em;
-	text-align: right;
+.btnArrowLeft {
+  padding-top: 0.4em;
+  text-align: right;
 }
 
-.total{
-	text-align: right;
+.total {
+  text-align: right;
 }
 
-.totalText{
-	padding-top: 1em;
-	text-align: right;
-	font-size: 1.1em;
+.totalText {
+  padding-top: 1em;
+  text-align: right;
+  font-size: 1.1em;
+	white-space: nowrap;
 }
 
-.filtersLabel{
-	padding-top: 0.2em;
+.filtersLabel {
+  padding-top: 0.2em;
 }
 
-.filtersInput{
-	text-align: left;
+.filtersInput {
+  text-align: left;
 }
 
-.reportsTable{
-	text-align: center;
-	overflow: auto;
-	max-height: 30em;
-	margin-top: 2em;
+.reportsTable {
+  text-align: center;
+  overflow: auto;
+  max-height: 30em;
+  margin-top: 2em;
 }
 
-.reportsLabel{
-	padding-top: 0.2em;
-	font-size: 1.6em;
+.reportsLabel {
+  padding-top: 0.2em;
+  font-size: 1.6em;
+	color: #525252;
 }
