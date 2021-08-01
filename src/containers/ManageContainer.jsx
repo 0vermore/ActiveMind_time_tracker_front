@@ -37,15 +37,15 @@ class ManageContainer extends Component {
 
     getCurrentUser() {
         var config = this.getAuthToken()
-        axios.post('/api/signin', config)
-          .then(response => {
-            this.props.dispatch(loadUser(response.data))
-            this.getUser()
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      }
+        axios.post(ROUTES.SIGN_IN, config)
+            .then(response => {
+                this.props.dispatch(loadUser(response.data))
+                this.getUser()
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     getUser() {
         if (this.props.user && this.props.user.is_admin === true) {
@@ -61,7 +61,7 @@ class ManageContainer extends Component {
 
     getUsers() {
         var config = this.getAuthToken();
-        axios.get('/api/users', config)
+        axios.get(ROUTES.USERS, config)
             .then(response => {
                 this.props.dispatch(loadUsers(response.data))
             })
@@ -70,7 +70,7 @@ class ManageContainer extends Component {
 
     getProjects() {
         var config = this.getAuthToken();
-        axios.get('/api/projects', config)
+        axios.get(ROUTES.PROJECTS, config)
             .then(response => {
                 this.props.dispatch(loadProjects(response.data))
             })
@@ -79,7 +79,7 @@ class ManageContainer extends Component {
 
     getCategories() {
         var config = this.getAuthToken();
-        axios.get('/api/categories', config)
+        axios.get(ROUTES.CATEGORIES, config)
             .then(response => {
                 this.props.dispatch(loadCategories(response.data))
             })
@@ -88,7 +88,7 @@ class ManageContainer extends Component {
 
     createUser = ({ firstname, lastname, email, password }) => {
         var config = this.getAuthToken();
-        axios.post('/api/users', {
+        axios.post(ROUTES.USERS, {
             firstname: firstname,
             lastname: lastname,
             email: email,
@@ -103,7 +103,7 @@ class ManageContainer extends Component {
 
     createCategory = ({ category }) => {
         var config = this.getAuthToken();
-        axios.post('/api/categories', {
+        axios.post(ROUTES.CATEGORIES, {
             category: category,
         }, config)
             .then(response => {
@@ -114,7 +114,7 @@ class ManageContainer extends Component {
 
     createProject = ({ project }) => {
         var config = this.getAuthToken();
-        axios.post('/api/projects', {
+        axios.post(ROUTES.PROJECTS, {
             project: project,
         }, config)
             .then(response => {
@@ -125,7 +125,7 @@ class ManageContainer extends Component {
 
     deleteUser = (id) => {
         var config = this.getAuthToken();
-        axios.delete(`/api/users/${id}`, config)
+        axios.delete(ROUTES.USERS + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
@@ -134,7 +134,7 @@ class ManageContainer extends Component {
 
     deleteCategory = (id) => {
         var config = this.getAuthToken();
-        axios.delete(`/api/categories/${id}`, config)
+        axios.delete(ROUTES.CATEGORIES + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
@@ -143,7 +143,7 @@ class ManageContainer extends Component {
 
     deleteProject = (id) => {
         var config = this.getAuthToken();
-        axios.delete(`/api/projects/${id}`, config)
+        axios.delete(ROUTES.PROJECTS + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
@@ -156,32 +156,34 @@ class ManageContainer extends Component {
 
     render() {
         return (
-            <div className="p-4">
+            <div className="p-3">
                 <Row>
-                    <Col className="text-center"><h2>Create User</h2></Col>
-                    <Col className="text-center"><h2>Create Category</h2></Col>
-                    <Col className="text-center"><h2>Create Project</h2></Col>
-                </Row>
-                <Row>
-                    <Col className="shadow p-5 mb-5 bg-white rounded">
+                    <Col className="shadow p-4 m-3 bg-white rounded">
+                        <h3>Create User</h3>
                         <CreateUser handleSubmit={this.createUser} />
                     </Col>
-                    <Col className="shadow mb-5 ml-3 mr-3 bg-white rounded p-5">
+                    <Col className="shadow p-4 m-3 bg-white rounded">
+                        <h3>Create Category</h3>
                         <CreateCategory handleSubmit={this.createCategory} />
                     </Col>
-                    <Col className="shadow p-5 mb-5 bg-white rounded">
+                    <Col className="shadow p-4 m-3 bg-white rounded">
+                        <h3>Create Project</h3>
                         <CreateProject handleSubmit={this.createProject} />
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="text-center"><h2>Users List</h2></Col>
-                    <Col className="text-center"><h2>Categories List</h2></Col>
-                    <Col className="text-center"><h2>Projects List</h2></Col>
-                </Row>
-                <Row>
-                    <Col className="shadow p-5 mb-5 bg-white rounded"><UsersList users={this.props.users} deleteUser={this.deleteUser} /></Col>
-                    <Col className="shadow p-5 mb-5 ml-3 mr-3 bg-white rounded"><CategoriesList categories={this.props.categories} deleteCategory={this.deleteCategory} /></Col>
-                    <Col className="shadow p-5 mb-5 bg-white rounded"><ProjectsList projects={this.props.projects} deleteProject={this.deleteProject} /></Col>
+                    <Col className="shadow p-4 m-3 bg-white rounded">
+                        <h3>Users List</h3>
+                        <UsersList users={this.props.users} deleteUser={this.deleteUser} />
+                    </Col>
+                    <Col className="shadow p-4 m-3 bg-white rounded">
+                        <h3>Categories List</h3>
+                        <CategoriesList categories={this.props.categories} deleteCategory={this.deleteCategory} />
+                    </Col>
+                    <Col className="shadow p-4 m-3 bg-white rounded">
+                        <h3>Projects List</h3>
+                        <ProjectsList projects={this.props.projects} deleteProject={this.deleteProject} />
+                    </Col>
                 </Row>
             </div>
         );

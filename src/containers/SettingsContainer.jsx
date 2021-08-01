@@ -19,9 +19,9 @@ class SettingsContainer extends Component {
     handleSubmit = (params) => {
         var config = this.getAuthToken();
 
-        axios.put(`/api/setup/${localStorage.getItem('id')}`, {
-                password: params.password
-            }, config)
+        axios.put(ROUTES.SETUP + `/${localStorage.getItem('id')}`, {
+            password: params.password
+        }, config)
             .then(response => {
                 history.push('/')
                 history.go(0)

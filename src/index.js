@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { authenticated, unauthenticated } from './actions/actionCreators.js';
 import Reports from './containers/ReportsContainer';
+import MyReport from './containers/UserReportContainer';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -43,6 +44,7 @@ ReactDOM.render(
           <Route path="/logout" component={Logout} />
           <Route path="/settings" component={Settings} />
           <Route path="/reports" component={Reports} />
+          <Route path="/my-report" component={MyReport} />
           <Route path="/manage" component={Manage} />
           <Route path="/404" component={NotFound} />
             <Redirect to="/404" />

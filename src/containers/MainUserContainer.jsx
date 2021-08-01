@@ -29,7 +29,7 @@ class MainUserContainer extends Component {
 	getNotes() {
 		var config = this.getAuthToken();
 
-		axios.get('/api/notes', config)
+		axios.get(ROUTES.NOTES, config)
 			.then(response => {
 				this.props.dispatch(loadNotes(response.data));
 				this.setState({ loading: false });
@@ -40,7 +40,7 @@ class MainUserContainer extends Component {
 	createNote = ({ user_id, project_id, category_id, description, hours, date }) => {
 
 		var config = this.getAuthToken();
-		axios.post('/api/notes', {
+		axios.post(ROUTES.NOTES, {
 			user_id: user_id,
 			project_id: project_id, category_id: category_id,
 			description: description, hours: hours, date: date
@@ -56,7 +56,7 @@ class MainUserContainer extends Component {
 	updateNote = (params) => {
 		var config = this.getAuthToken();
 
-		axios.put(`/api/notes/${params.id}`, {
+		axios.put(ROUTES.NOTES + `/${params.id}`, {
 			project_id: params.project_id,
 			category_id: params.category_id, description: params.description,
 			hours: params.hours, date: params.date
@@ -65,13 +65,13 @@ class MainUserContainer extends Component {
 				this.props.dispatch(updateNote(params.id))
 			})
 			.catch(error => console.log(error))
-			history.go(0)
+		history.go(0)
 	}
 
 	deleteNote = (id) => {
 		var config = this.getAuthToken();
 
-		axios.delete(`/api/notes/${id}`, config)
+		axios.delete(ROUTES.NOTES + `/${id}`, config)
 			.then(response => {
 				this.props.dispatch(deleteNote(id))
 			})
@@ -81,10 +81,8 @@ class MainUserContainer extends Component {
 	getProjects() {
 		var config = this.getAuthToken();
 
-		axios.get('/api/projects', config)
+		axios.get(ROUTES.PROJECTS, config)
 			.then(response => {
-				console.log("Projects:")
-				console.log(response.data)
 				this.props.dispatch(loadProjects(response.data));
 			})
 			.catch(error => console.log(error.message))
@@ -93,10 +91,8 @@ class MainUserContainer extends Component {
 	getCategories() {
 		var config = this.getAuthToken();
 
-		axios.get('/api/categories', config)
+		axios.get(ROUTES.CATEGORIES, config)
 			.then(response => {
-				console.log("Categories")
-				console.log(response.data)
 				this.props.dispatch(loadCategories(response.data));
 			})
 			.catch(error => console.log(error.message))
@@ -119,11 +115,11 @@ class MainUserContainer extends Component {
 					)
 					}
 					<div className="datePicker">
-						<DatePicker notes={this.props.notes} 
-						projects={this.props.projects}
-						categories={this.props.categories}
-						updateNote={this.updateNote}
-						deleteNote={this.deleteNote}/>
+						<DatePicker notes={this.props.notes}
+							projects={this.props.projects}
+							categories={this.props.categories}
+							updateNote={this.updateNote}
+							deleteNote={this.deleteNote} />
 					</div>
 				</div>
 			</div>

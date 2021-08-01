@@ -6,4 +6,12 @@ const API_URL = window.location.origin.includes('localhost')
 
 export default {
   API: API_URL,
+
+  SIGN_IN: '/api/signin',
+  SETUP: '/api/setup',
+
+  NOTES: '/api/notes',
+  PROJECTS: '/api/projects',
+  CATEGORIES: '/api/categories',
+  USERS: '/api/users',
 }
