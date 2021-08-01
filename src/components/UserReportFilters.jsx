@@ -30,7 +30,7 @@ class UserReportFilters extends Component {
             <div>
                 <form>
                     <Row style={{justifyContent: 'center'}}>
-                        <Col sm={2} style={{ maxWidth: '122px', padding: '0px' }}>
+                        <Col sm={2} style={{ maxWidth: '130px', padding: '0px' }}>
                             <span className="reportsLabel">Report for:</span>
                         </Col>
                         <Col sm={3} controlid="project">
