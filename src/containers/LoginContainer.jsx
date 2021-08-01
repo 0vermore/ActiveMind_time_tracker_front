@@ -21,7 +21,7 @@ class LoginContainer extends Component {
             email: params.email,
             password: params.password
         }
-        axios.post('/api/signin', data)
+        axios.post(ROUTES.SIGN_IN, data)
             .then(response => {
                 this.props.dispatch(loadUser(response.data))
                 localStorage.setItem('is_admin', response.data.user.is_admin);

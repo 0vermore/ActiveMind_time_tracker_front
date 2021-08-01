@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { loadUser } from '../actions/actionCreators'
+import ROUTES from '../routes'
 
 class Session extends Component {
     componentDidMount() {
@@ -10,7 +11,7 @@ class Session extends Component {
 
     getCurrentUser() {
       var config = this.getAuthToken()
-      axios.post('/api/signin', config)
+      axios.post(ROUTES.SIGN_IN, config)
         .then(response => {
           this.props.dispatch(loadUser(response.data))
         })

@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { loadNotes, updateNote, deleteNote, loadProjects, loadCategories, loadUsers } from '../actions/actionCreators'
+import { loadNotes, updateNote, deleteNote, loadProjects, loadCategories} from '../actions/actionCreators'
 import Loader from '../components/Loader'
-import ReportsFilters from '../components/ReportsFilters'
+import UserReportFilters from '../components/UserReportFilters'
 import { createBrowserHistory } from 'history'
 import ROUTES from '../routes'
 
 const history = createBrowserHistory();
 
-class ReportsContainer extends Component {
+class UserReportContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -81,31 +81,20 @@ class ReportsContainer extends Component {
             .catch(error => console.log(error.message))
     }
 
-    getUsers() {
-        var config = this.getAuthToken();
-
-        axios.get(ROUTES.USERS, config)
-            .then(response => {
-                this.props.dispatch(loadUsers(response.data));
-            })
-            .catch(error => console.log(error.message))
-    }
-
     componentDidMount() {
         this.getNotes();
         this.getProjects();
         this.getCategories();
-        this.getUsers();
     }
 
     render() {
+        console.log(this.props.notes, 'notes')
         return (
             <div>
                 <div className="container">
                     {this.state.loading ? <Loader /> : (
-                        <ReportsFilters
+                        <UserReportFilters
                             notes={this.props.notes}
-                            users={this.props.users}
                             projects={this.props.projects}
                             categories={this.props.categories}
                             updateNote={this.updateNote}
@@ -123,8 +112,7 @@ const mapStateToProps = (state) => {
         notes: state.notes,
         projects: state.projects,
         categories: state.categories,
-        users: state.users
     }
 }
 
-export default connect(mapStateToProps)(ReportsContainer)
+export default connect(mapStateToProps)(UserReportContainer)
