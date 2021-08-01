@@ -12,8 +12,10 @@ import CategoriesList from '../components/CategoriesList'
 import { loadUsers, loadProjects, loadCategories, loadUser } from '../actions/actionCreators'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ROUTES from '../routes'
 
 const history = createBrowserHistory();
+
 const danger_notify = (error) => toast.error(error, {
     position: "top-right",
     autoClose: 5000,
@@ -25,6 +27,14 @@ const danger_notify = (error) => toast.error(error, {
 })
 
 class ManageContainer extends Component {
+    getAuthToken() {
+        var config = {
+            baseURL: ROUTES.API,
+            headers: { 'Authorization': localStorage.getItem('token') }
+        }
+        return config;
+    }
+
     getCurrentUser() {
         var config = this.getAuthToken()
         axios.post('/api/signin', config)
@@ -47,16 +57,6 @@ class ManageContainer extends Component {
             history.push('/')
             history.go(0)
         }
-    }
-
-    getAuthToken() {
-        var config = {
-            baseURL: 'https://portal.milestep.io',
-			// baseURL: 'http://localhost:4000',
-			// baseURL: 'https://active-mind-api.herokuapp.com',
-            headers: { 'Authorization': localStorage.getItem('token') }
-        }
-        return config;
     }
 
     getUsers() {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import SettingsForm from '../components/SettingsForm'
 import { createBrowserHistory } from 'history'
+import ROUTES from '../routes'
 
 const history = createBrowserHistory();
 
@@ -9,9 +10,7 @@ class SettingsContainer extends Component {
 
     getAuthToken() {
         var config = {
-            baseURL: 'https://portal.milestep.io',
-			// baseURL: 'http://localhost:4000',
-			// baseURL: 'https://active-mind-api.herokuapp.com',
+            baseURL: ROUTES.API,
             headers: { 'Authorization': localStorage.getItem('token') }
         }
         return config;

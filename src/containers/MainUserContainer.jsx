@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import CreateNote from '../components/CreateNote'
 import DatePicker from '../components/DatePicker'
 import { createBrowserHistory } from 'history'
+import ROUTES from '../routes'
 
 const history = createBrowserHistory();
 
@@ -19,9 +20,7 @@ class MainUserContainer extends Component {
 
 	getAuthToken() {
 		var config = {
-			baseURL: 'https://portal.milestep.io',
-			// baseURL: 'http://localhost:4000',
-			// baseURL: 'https://active-mind-api.herokuapp.com',
+			baseURL: ROUTES.API,
 			headers: { 'Authorization': localStorage.getItem('token') }
 		}
 		return config;

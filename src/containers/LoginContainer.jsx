@@ -6,11 +6,11 @@ import { unauthenticated } from '../actions/actionCreators'
 import { createBrowserHistory } from 'history'
 import { loadUser } from '../actions/actionCreators'
 import { toast } from 'react-toastify'
+import ROUTES from '../routes'
 
 const history = createBrowserHistory();
-axios.defaults.baseURL = 'https://portal.milestep.io';
-// axios.defaults.baseURL = 'http://localhost:4000';
-// axios.defaults.baseURL = 'https://active-mind-api.herokuapp.com';
+
+axios.defaults.baseURL = ROUTES.API
 axios.defaults.timeout = 10000;
 axios.defaults.headers = { 'Access-Control-Allow-Origin': '*' }
 
