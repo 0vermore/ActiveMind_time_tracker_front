@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import CreateNote from '../components/CreateNote'
 import DatePicker from '../components/DatePicker'
 import { createBrowserHistory } from 'history'
+import { DateTime as DT } from 'luxon'
 import ROUTES from '../routes'
 
 const history = createBrowserHistory();
@@ -14,8 +15,10 @@ class MainUserContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loading: true
+			loading: true,
+			date: DT.now().toISODate()
 		};
+		this.updateDate = this.updateDate.bind(this);
 	}
 
 	getAuthToken() {
@@ -51,6 +54,10 @@ class MainUserContainer extends Component {
 			})
 			.catch(error => console.log(error))
 
+	}
+
+	updateDate = (value) => {
+		this.setState({ date: value})
 	}
 
 	updateNote = (params) => {
@@ -105,13 +112,15 @@ class MainUserContainer extends Component {
 	}
 
 	render() {
+		
 		return (
 			<div>
 				<div className="container">
 					{this.state.loading ? <Loader /> : (
 						<CreateNote projects={this.props.projects}
 							categories={this.props.categories}
-							handleSubmit={this.createNote} />
+							handleSubmit={this.createNote} 
+							date={this.state.date} />
 					)
 					}
 					<div className="datePicker">
@@ -119,7 +128,8 @@ class MainUserContainer extends Component {
 							projects={this.props.projects}
 							categories={this.props.categories}
 							updateNote={this.updateNote}
-							deleteNote={this.deleteNote} />
+							deleteNote={this.deleteNote} 
+							updateDate={this.updateDate} />
 					</div>
 				</div>
 			</div>

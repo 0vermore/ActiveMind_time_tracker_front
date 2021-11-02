@@ -17,18 +17,21 @@ class DatePicker extends Component {
 
     onChangeDate(event) {
         this.setState({ date: event.target.value });
+        this.props.updateDate(event.target.value)
     }
 
     onDatePlus(event) {
         let dt = DT.fromISO(this.state.date)
         let new_dt = dt.plus({ days: 1 })
         this.setState({ date: new_dt.toISODate() });
+        this.props.updateDate(new_dt.toISODate())
     }
 
     onDateMinus(event) {
         let dt = DT.fromISO(this.state.date)
         let new_dt = dt.minus({ days: 1 })
         this.setState({ date: new_dt.toISODate() });
+        this.props.updateDate(new_dt.toISODate())
     }
 
     render() {
@@ -51,6 +54,7 @@ class DatePicker extends Component {
         for(let i = 0; i<up_to_date_notes.length; i++){
             total += up_to_date_notes[i].hours
         }
+        
         return (
             <div>
                 <form className="datePickerForm">
