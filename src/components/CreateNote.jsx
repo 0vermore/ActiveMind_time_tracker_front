@@ -46,7 +46,7 @@ class CreateNote extends Component {
         event.preventDefault();
         this.props.handleSubmit({
             project_id: this.state.project, category_id: this.state.category,
-            description: this.state.description, hours: this.state.hours, date: this.state.date
+            description: this.state.description, hours: this.state.hours, date: this.props.date
         })
     }
 
@@ -56,10 +56,6 @@ class CreateNote extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <Row>
-                    <Col controlid="date" sm>
-                        <FormControl controlid="date" type="date" required
-                            value={this.state.date} onChange={this.onChangeDate} />
-                    </Col>
                     <Col controlid="project" sm>
                         <FormControl value={this.state.project} as="select"
                             onChange={this.onChangeProject}>
