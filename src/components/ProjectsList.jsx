@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BsFillTrashFill } from "react-icons/bs"
+import ModalContainer from '../containers/ModalContainer';
+
 
 class ProjectsList extends Component {
   render() {
@@ -18,7 +20,16 @@ class ProjectsList extends Component {
             <tr>
               <td>{index + 1}</td>
               <td>{project.project}</td>
-              <td className='text-right'><BsFillTrashFill className="deleteBtn" onClick={(e) => this.props.deleteProject(project.id)}>X</BsFillTrashFill></td>
+              <td className='text-right'>
+              <ModalContainer className="taskLabel" 
+                        projects={this.props.projects}
+                        categories={this.props.categories}
+                        onSubmit={this.props.updateNote} />
+                <BsFillTrashFill className="deleteBtn" 
+                onClick={(e) => this.props.deleteProject(project.id)}>
+                  X
+                </BsFillTrashFill>
+              </td>
             </tr>
           ))}
         </tbody>

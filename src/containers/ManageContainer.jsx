@@ -124,30 +124,48 @@ class ManageContainer extends Component {
     }
 
     deleteUser = (id) => {
+        const conf = window.confirm('Are you sure you want to delete?')
         var config = this.getAuthToken();
-        axios.delete(ROUTES.USERS + `/${id}`, config)
+        if (conf) {
+            axios.delete(ROUTES.USERS + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
             .catch(error => console.log(error))
+        } else {
+            alert('ok')
+        }
+       
     }
 
     deleteCategory = (id) => {
+        const conf = window.confirm('Are you sure you want to delete?')
         var config = this.getAuthToken();
-        axios.delete(ROUTES.CATEGORIES + `/${id}`, config)
+        if (conf) {
+            axios.delete(ROUTES.CATEGORIES + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
             .catch(error => console.log(error))
+        } else {
+            alert('ok')
+        }
+        
     }
 
     deleteProject = (id) => {
+        const conf = window.confirm('Are you sure you want to delete?')
         var config = this.getAuthToken();
-        axios.delete(ROUTES.PROJECTS + `/${id}`, config)
+        if (conf) {
+            axios.delete(ROUTES.PROJECTS + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
             .catch(error => console.log(error))
+        } else {
+            alert('ok')
+        }
+     
     }
 
     componentDidMount() {
