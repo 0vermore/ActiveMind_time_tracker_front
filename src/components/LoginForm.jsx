@@ -24,6 +24,7 @@ class LoginForm extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.props.handleSubmit({ email: this.state.email, password: this.state.password })
+        localStorage.setItem('hours', 0)
     }
 
     render() {

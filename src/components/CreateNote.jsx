@@ -7,10 +7,10 @@ class CreateNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            project: "",
-            category: "",
+            project: `${localStorage.getItem('project')}`,
+            category: `${localStorage.getItem('category')}`,
             description: "",
-            hours: "",
+            hours: `${localStorage.getItem('hours')}` ? `${localStorage.getItem('hours')}` : 0,
             date: DT.now().toISODate()
         };
         this.onChangeProject = this.onChangeProject.bind(this);
@@ -28,15 +28,18 @@ class CreateNote extends Component {
 
     onChangeProject(event) {
         this.setState({ project: event.target.value });
+        localStorage.setItem('project', event.target.value)
     }
     onChangeCategory(event) {
         this.setState({ category: event.target.value });
+        localStorage.setItem('category', event.target.value)
     }
     onChangeDescription(event) {
         this.setState({ description: event.target.value });
     }
     onChangeHours(event) {
         this.setState({ hours: event.target.value });
+        localStorage.setItem('hours', event.target.value)
     }
     onChangeDate(event) {
         this.setState({ date: event.target.value });
