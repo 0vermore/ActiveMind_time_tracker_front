@@ -143,9 +143,7 @@ class ManageContainer extends Component {
                 history.go(0)
             })
             .catch(error => console.log(error))
-        } else {
-            alert('ok')
-        }
+        } 
        
     }
 
@@ -170,9 +168,7 @@ class ManageContainer extends Component {
                 history.go(0)
             })
             .catch(error => console.log(error))
-        } else {
-            alert('ok')
-        }
+        } 
      
     }
 
