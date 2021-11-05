@@ -9,7 +9,7 @@ import CreateCategory from '../components/CreateCategory'
 import UsersList from '../components/UsersList'
 import ProjectsList from '../components/ProjectsList'
 import CategoriesList from '../components/CategoriesList'
-import { loadUsers, loadProjects, loadCategories, loadUser } from '../actions/actionCreators'
+import { loadUsers, loadProjects, loadCategories, loadUser, loadNotes} from '../actions/actionCreators'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ROUTES from '../routes'
@@ -68,6 +68,17 @@ class ManageContainer extends Component {
             .catch(error => console.log(error.message))
     }
 
+    getNotes() {
+		var config = this.getAuthToken();
+
+		axios.get(ROUTES.NOTES, config)
+			.then(response => {
+				this.props.dispatch(loadNotes(response.data));
+				this.setState({ loading: false });
+			})
+			.catch(error => console.log(error.message))
+	}
+
     getProjects() {
         var config = this.getAuthToken();
         axios.get(ROUTES.PROJECTS, config)
@@ -124,34 +135,46 @@ class ManageContainer extends Component {
     }
 
     deleteUser = (id) => {
+        const conf = window.confirm('Are you sure you want to delete?')
         var config = this.getAuthToken();
-        axios.delete(ROUTES.USERS + `/${id}`, config)
+        if (conf) {
+            axios.delete(ROUTES.USERS + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
             .catch(error => console.log(error))
+        } 
+       
     }
 
     deleteCategory = (id) => {
+        const conf = window.confirm('Are you sure you want to delete?')
         var config = this.getAuthToken();
-        axios.delete(ROUTES.CATEGORIES + `/${id}`, config)
+        if (conf) {
+            axios.delete(ROUTES.CATEGORIES + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
             .catch(error => console.log(error))
+        }
     }
 
     deleteProject = (id) => {
+        const conf = window.confirm('Are you sure you want to delete?')
         var config = this.getAuthToken();
-        axios.delete(ROUTES.PROJECTS + `/${id}`, config)
+        if (conf) {
+            axios.delete(ROUTES.PROJECTS + `/${id}`, config)
             .then(response => {
                 history.go(0)
             })
             .catch(error => console.log(error))
+        } 
+     
     }
 
     componentDidMount() {
         this.getCurrentUser()
+        this.getNotes()
     }
 
     render() {
