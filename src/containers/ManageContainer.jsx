@@ -9,7 +9,7 @@ import CreateCategory from '../components/CreateCategory'
 import UsersList from '../components/UsersList'
 import ProjectsList from '../components/ProjectsList'
 import CategoriesList from '../components/CategoriesList'
-import { loadUsers, loadProjects, loadCategories, loadUser } from '../actions/actionCreators'
+import { loadUsers, loadProjects, loadCategories, loadUser, loadNotes} from '../actions/actionCreators'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ROUTES from '../routes'
@@ -67,6 +67,17 @@ class ManageContainer extends Component {
             })
             .catch(error => console.log(error.message))
     }
+
+    getNotes() {
+		var config = this.getAuthToken();
+
+		axios.get(ROUTES.NOTES, config)
+			.then(response => {
+				this.props.dispatch(loadNotes(response.data));
+				this.setState({ loading: false });
+			})
+			.catch(error => console.log(error.message))
+	}
 
     getProjects() {
         var config = this.getAuthToken();
@@ -147,10 +158,7 @@ class ManageContainer extends Component {
                 history.go(0)
             })
             .catch(error => console.log(error))
-        } else {
-            alert('ok')
         }
-        
     }
 
     deleteProject = (id) => {
@@ -170,6 +178,7 @@ class ManageContainer extends Component {
 
     componentDidMount() {
         this.getCurrentUser()
+        this.getNotes()
     }
 
     render() {
