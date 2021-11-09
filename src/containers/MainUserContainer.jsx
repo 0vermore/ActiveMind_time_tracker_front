@@ -50,7 +50,7 @@ class MainUserContainer extends Component {
 		}, config)
 			.then(response => {
 				this.props.dispatch(addNote(response.data.id))
-				history.go(0)
+				this.getNotes();
 			})
 			.catch(error => console.log(error))
 
