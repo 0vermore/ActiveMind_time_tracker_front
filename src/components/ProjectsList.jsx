@@ -4,6 +4,14 @@ import ModalContainer from '../containers/ModalContainer';
 
 
 class ProjectsList extends Component {
+
+  renderTrashIcon(id) {
+    const { notes } = this.props;
+    const overlap = notes.some(({ project_id }) => project_id === id);
+    
+    return !overlap && <BsFillTrashFill className="deleteBtn" onClick={() => this.props.deleteProject(id)}>X</BsFillTrashFill>;
+  }
+  
   render() {
     return (
       <div className="border border-secondary rounded">
@@ -17,7 +25,7 @@ class ProjectsList extends Component {
         </thead>
         <tbody>
           {(this.props.projects).map((project, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{project.project}</td>
               <td className='text-right'>
@@ -25,10 +33,7 @@ class ProjectsList extends Component {
                         projects={this.props.projects}
                         categories={this.props.categories}
                         onSubmit={this.props.updateNote} />
-                <BsFillTrashFill className="deleteBtn" 
-                onClick={(e) => this.props.deleteProject(project.id)}>
-                  X
-                </BsFillTrashFill>
+                {this.renderTrashIcon(project.id)}
               </td>
             </tr>
           ))}

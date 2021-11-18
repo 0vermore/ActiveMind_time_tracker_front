@@ -185,6 +185,7 @@ class ManageContainer extends Component {
                         <h3>Create User</h3>
                         <CreateUser handleSubmit={this.createUser} />
                     </Col>
+                    
                     <Col className="shadow p-4 m-3 bg-white rounded">
                         <h3>Create Category</h3>
                         <CreateCategory handleSubmit={this.createCategory} />
@@ -197,15 +198,15 @@ class ManageContainer extends Component {
                 <Row>
                     <Col className="shadow p-4 m-3 bg-white rounded">
                         <h3>Users List</h3>
-                        <UsersList users={this.props.users} deleteUser={this.deleteUser} />
+                        <UsersList notes={this.props.notes} users={this.props.users} deleteUser={this.deleteUser} />
                     </Col>
                     <Col className="shadow p-4 m-3 bg-white rounded">
                         <h3>Categories List</h3>
-                        <CategoriesList categories={this.props.categories} deleteCategory={this.deleteCategory} />
+                        <CategoriesList notes={this.props.notes} categories={this.props.categories} deleteCategory={this.deleteCategory} />
                     </Col>
                     <Col className="shadow p-4 m-3 bg-white rounded">
                         <h3>Projects List</h3>
-                        <ProjectsList projects={this.props.projects} deleteProject={this.deleteProject} />
+                        <ProjectsList notes={this.props.notes} projects={this.props.projects} deleteProject={this.deleteProject} />
                     </Col>
                 </Row>
             </div>
@@ -216,6 +217,7 @@ class ManageContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.user.user,
+        notes: state.notes,
         users: state.users,
         projects: state.projects,
         categories: state.categories
