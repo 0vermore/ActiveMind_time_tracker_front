@@ -87,7 +87,7 @@ class CreateNote extends Component {
                     </Col>
                     <Col sm={3}>
                         <Button block disabled={!this.validateForm()} type="submit">
-                            Save
+                            Save 
                     </Button>
                     </Col>
                 </Row>
